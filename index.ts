@@ -1,11 +1,12 @@
-require('dotenv').config();
+import authRouter from '@routes/auth/index';
+
 const express = require('express');
-const mysql = require('mysql2');
-const port = process.env.PORT ?? 7777;
-const authRouter = require('./routes/auth/index');
 const cors = require('cors');
 
 const server = express();
+const port = process.env.PORT ?? 7777;
+
+require('dotenv').config({ path: '.env.local' });
 
 server.use(cors({
   origin: 'http://localhost:3000',

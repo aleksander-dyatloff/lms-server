@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@routes/*": [
+        "./routes/*"
+      ],
+      "@utils/*": [
+        "./utils/*"
+      ]
+    }
+  },
+}
