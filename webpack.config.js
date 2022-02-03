@@ -22,6 +22,7 @@ module.exports = {
     alias: {
       '@routes': path.resolve(__dirname, 'routes/'),
       '@utils': path.resolve(__dirname, 'utils/'),
+      '@root': path.resolve(__dirname, '.'),
     },
   },
   module: {
