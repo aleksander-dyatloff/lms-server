@@ -1,7 +1,6 @@
-import authRouter from '@routes/auth/index';
-
-const express = require('express');
-const cors = require('cors');
+import authRouter from '@routes/auth';
+import express from 'express';
+import cors from 'cors';
 
 const server = express();
 const port = process.env.PORT ?? 7777;
@@ -9,7 +8,7 @@ const port = process.env.PORT ?? 7777;
 require('dotenv').config({ path: '.env.local' });
 
 server.use(cors({
-  origin: 'http://localhost:3000',
+  origin: process.env.CLIENT_DOMAIN,
   optionsSuccessStatus: 200,
 }));
 

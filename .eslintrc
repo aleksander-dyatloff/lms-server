@@ -14,10 +14,15 @@
     "plugins": [
         "@typescript-eslint"
     ],
+    "settings": {
+      "import/resolver": {
+        "typescript": {
+          "extensions": [".js", ".ts"]
+        }
+      }
+    },
     "rules": {
-      "import/no-unresolved": "off",
       "import/extensions": "off",
-      "import/order": "off",
-      "import/first": "off"
+      "no-console": "off"
     }
 }

@@ -1,6 +1,6 @@
 import { OAuth2Client } from 'google-auth-library';
 import { Router } from 'express';
-import controller from '../../utils/controller';
+import controller from '@utils/controller';
 
 const client = new OAuth2Client(process.env.CLIENT_ID);
 const authRouter = Router();
