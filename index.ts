@@ -1,4 +1,5 @@
 import authRouter from '@routes/auth';
+import usersRouter from '@routes/users';
 import express from 'express';
 import cors from 'cors';
 import mysqlBootstrap from './mysql';
@@ -15,7 +16,7 @@ server.use(cors({
 
 server.use(express.json());
 
-server.use(authRouter);
+server.use(authRouter, usersRouter);
 
 export const connection = mysqlBootstrap();
 

@@ -6,18 +6,13 @@ const mysqlBootstrap = () => {
     user: process.env.MYSQL_USER,
     port: Number(process.env.MYSQL_PORT),
     password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
   });
 
   connection.connect((err) => {
     if (err) return console.log('Failed connect to MySQL', err);
 
     console.log('Connected to MySQL server');
-  });
-
-  connection.end((err) => {
-    if (err) return console.log('Failed close connect to MySQL', err);
-
-    console.log('Connection to MySQL successfully closed');
   });
 
   return connection;
