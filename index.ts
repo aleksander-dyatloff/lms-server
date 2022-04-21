@@ -2,7 +2,7 @@ import authRouter from '@routes/auth';
 import usersRouter from '@routes/users';
 import express from 'express';
 import cors from 'cors';
-import mysqlBootstrap from './mysql';
+import lessonsRouter from '@routes/lessons';
 
 const server = express();
 const port = process.env.PORT ?? 7777;
@@ -14,11 +14,11 @@ server.use(cors({
   optionsSuccessStatus: 200,
 }));
 
+require('./database');
+
 server.use(express.json());
 
-server.use(authRouter, usersRouter);
-
-export const connection = mysqlBootstrap();
+server.use(authRouter, usersRouter, lessonsRouter);
 
 server.listen(port, () => {
   console.log(`Server started at port ${port}`);

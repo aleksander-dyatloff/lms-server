@@ -1,31 +1,27 @@
-import { connection } from '@root/index';
+import UserModel from '@root/models/User';
 import UsersService from './types';
 
 const Users = {
   async registerUser(userInfo: UsersService.UserInfo) {
-    const user = [userInfo.name, userInfo.email, userInfo.id, userInfo.picture];
+    const createdUser = new UserModel({
+      ...userInfo,
+    });
 
-    await connection
-      .promise()
-      .query('INSERT INTO users(name, email, id, picture) VALUES(?, ?, ?, ?)', user);
+    await createdUser.save();
 
-    return true;
+    return createdUser;
   },
 
   async getUserById(id: string) {
-    const [result] = await connection
-      .promise()
-      .query<[]>(`SELECT * FROM users WHERE id = '${id}'`);
+    const user = await UserModel.findOne({
+      googleId: id,
+    });
 
-    return result;
+    return user;
   },
 
   async getAll() {
-    const [result] = await connection
-      .promise()
-      .query('SELECT * FROM users');
-
-    return result;
+    return [];
   },
 };
 

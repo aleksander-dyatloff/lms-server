@@ -1,6 +1,6 @@
 namespace UsersService {
   export interface UserInfo {
-    readonly id: string
+    readonly googleId: string
     name?: string
     email?: string
     picture?: string

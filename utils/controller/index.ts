@@ -4,7 +4,7 @@ const controller = (callback) => async (req, res, next) => {
   } catch (error) {
     console.log(error);
 
-    res.json(error);
+    res.status(error.code).send(error);
   }
 };
 

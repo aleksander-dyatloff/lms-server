@@ -15,19 +15,21 @@ authRouter.post('/api/login', controller(async (req, res) => {
   });
 
   const {
-    name, email, picture, sub,
+    name, email, picture, sub: id,
   } = ticket.getPayload();
 
-  const targetUser = await Users.getUserById(sub);
+  const targetUser = await Users.getUserById(String(id));
 
-  if (!targetUser.length) {
-    await Users.registerUser({
-      name, email, picture, id: sub,
+  let user;
+
+  if (!targetUser) {
+    user = await Users.registerUser({
+      name, email, picture, googleId: id,
     });
   }
 
   res.json({
-    name, email, picture, sub,
+    name, email, picture, id, _id: user?._id,
   });
 }));
 
